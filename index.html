@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --accent-color: #0077b5;
+            --section-bg: #f4f4f4;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #121212;
+            --text-color: #f1f1f1;
+            --accent-color: #00aaff;
+            --section-bg: #1e1e1e;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        header {
+            background: var(--accent-color);
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        section {
+            padding: 20px;
+            background-color: var(--section-bg);
+            margin-bottom: 10px;
+            border-radius: 10px;
+        }
+
+        .project {
+            border-left: 5px solid var(--accent-color);
+            padding-left: 10px;
+        }
+
+        .linkedin-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .linkedin-icon {
+            width: 32px;
+            height: 32px;
+        }
+
+        .linkedin-link {
+            font-size: 1rem;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+            .linkedin-link:hover {
+                text-decoration: underline;
+            }
+
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+
+    <header>
+        <h1>Shaheer Nauman</h1>
+        <p>Web Developer | Designer | Programmer</p>
+    </header>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>I’m a passionate web developer with experience in HTML, CSS, and JavaScript. I build responsive, user-friendly websites.</p>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="project">
+            <h3>Project Title</h3>
+            <p>Description of what you built and what tools you used.</p>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Email: sn.4929@gmail.com</p>
+        <div class="linkedin-section">
+            <svg class="linkedin-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34 34" role="img">
+                <title>LinkedIn</title>
+                <g>
+                    <path d="M34,2.52A2.5,2.5,0,0,0,31.48,0H2.52A2.5,2.5,0,0,0,0,2.52V31.48A2.5,2.5,0,0,0,2.52,34H31.48A2.5,2.5,0,0,0,34,31.48V2.52Z" fill="#0077b5" />
+                    <path d="M10.08,28.28H5.44V13.54h4.64Zm-2.32-16.8A2.7,2.7,0,1,1,10.46,8.7,2.71,2.71,0,0,1,7.76,11.48ZM28.56,28.28H23.92V21.24c0-1.68-.6-2.84-2.08-2.84a2.25,2.25,0,0,0-2.12,1.52,2.8,2.8,0,0,0-.14,1v7.36H15V18.12a5.28,5.28,0,0,1,.12-1.32,4.4,4.4,0,0,1,.88-1.52,5,5,0,0,1,3.56-1.48c2.6,0,4.56,1.72,4.56,5.44Z" fill="#fff" />
+                </g>
+            </svg>
+            <a class="linkedin-link" href="https://linkedin.com/in/shaheer-n-443371334/" target="_blank">Connect on LinkedIn</a>
+        </div>
+    </section>
+
+    <script>
+        // Toggle light/dark mode
+        function toggleTheme() {
+            const html = document.documentElement;
+            const current = html.getAttribute("data-theme");
+            const next = current === "dark" ? "light" : "dark";
+            html.setAttribute("data-theme", next);
+            localStorage.setItem("theme", next);
+        }
+
+        // Load user's theme preference
+        (function () {
+            const saved = localStorage.getItem("theme");
+            if (saved) {
+                document.documentElement.setAttribute("data-theme", saved);
+            }
+        })();
+    </script>
+</body>
+</html>
